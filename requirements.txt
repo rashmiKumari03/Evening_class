@@ -3,3 +3,7 @@ pandas
 matplotlib 
 seaborn 
 pymongo
+scikit-learn
+from_root
+pyyaml
+dill
