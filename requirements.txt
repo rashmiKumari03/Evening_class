@@ -7,3 +7,7 @@ scikit-learn
 from_root
 pyyaml
 dill
+
+xgboost
+catboost
+flask
