@@ -1,0 +1,20 @@
+columns:
+  gender: string
+  race_ethnicity: string
+  parental_level_of_education: string
+  lunch: string
+  test_preparation_course: string
+  math_score: int
+  reading_score: int
+  writing_score: int
+numerical_features:
+  - reading_score
+  - writing_score
+categorical_features:
+  - gender
+  - race_ethnicity
+  - parental_level_of_education
+  - lunch
+  - test_preparation_course
+target_feature:
+  - math_score
