@@ -7,6 +7,10 @@ import dill
 from src.Student_Marks_Maths_Predictor.logger.logger import logging
 from src.Student_Marks_Maths_Predictor.exception.expection import CustomException
 
+from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
+
+
 class MainUtils:
     
     # Read Yaml file and return data as dictionary:
@@ -39,3 +43,46 @@ class MainUtils:
         except Exception as e:
             CustomException(str(e),sys)  
         
+        
+  
+    def evaluate_model(self, X_train, y_train, X_test, y_test, models, params=None):
+        try:
+            logging.info("Starting model evaluation...")
+            report = {}
+
+            for model_name, model in models.items():
+                logging.info(f"Training and evaluating model: {model_name}")
+
+                # If hyperparameters are provided, apply GridSearchCV
+                if params and model_name in params and params[model_name]:
+                    from sklearn.model_selection import GridSearchCV
+                    grid_search = GridSearchCV(model, params[model_name], cv=5, scoring="r2", n_jobs=-1)
+                    grid_search.fit(X_train, y_train)
+                    model = grid_search.best_estimator_
+                    logging.info(f"Best parameters for {model_name}: {grid_search.best_params_}")
+
+                # Train model
+                model.fit(X_train, y_train)
+                y_train_pred = model.predict(X_train)
+                y_test_pred = model.predict(X_test)
+
+                # Compute R2 Scores
+                train_model_score = r2_score(y_train, y_train_pred)
+                test_model_score = r2_score(y_test, y_test_pred)
+
+                # Cross-validation score for better robustness
+                cv_score = cross_val_score(model, X_train, y_train, cv=5, scoring="r2").mean()
+
+                logging.info(f"{model_name} - Train R2: {train_model_score:.4f}, Test R2: {test_model_score:.4f}, CV Score: {cv_score:.4f}")
+
+                report[model_name] = {"Test R2": test_model_score, "CV Score": cv_score}
+
+            logging.info("Model evaluation completed successfully.")
+            return report
+
+        except Exception as e:
+            logging.error(f"Error during model evaluation: {str(e)}")
+            raise CustomException(str(e), sys)
+
+
+       

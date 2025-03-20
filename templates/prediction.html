@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Score Predictor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow-lg p-4" style="max-width: 600px; margin: auto;">
+            <h2 class="text-center text-primary fw-bold">Math Score Predictor</h2>
+            <p class="text-center text-muted">Enter details to predict the math score</p>
+            
+            <form method="POST" class="mt-3">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Gender</label>
+                    <select name="gender" class="form-select" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Race/Ethnicity</label>
+                    <select name="race_ethnicity" class="form-select" required>
+                        <option value="group A">Group A</option>
+                        <option value="group B">Group B</option>
+                        <option value="group C">Group C</option>
+                        <option value="group D">Group D</option>
+                        <option value="group E">Group E</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Parental Level of Education</label>
+                    <select name="parental_education" class="form-select" required>
+                        <option value="high school">High School</option>
+                        <option value="some college">Some College</option>
+                        <option value="associate's degree">Associate's Degree</option>
+                        <option value="bachelor's degree">Bachelor's Degree</option>
+                        <option value="master's degree">Master's Degree</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Lunch Type</label>
+                    <select name="lunch" class="form-select" required>
+                        <option value="standard">Standard</option>
+                        <option value="free/reduced">Free/Reduced</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Test Preparation Course</label>
+                    <select name="test_prep" class="form-select" required>
+                        <option value="none">None</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Reading Score</label>
+                    <input type="number" name="reading_score" class="form-control" min="0" max="100" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Writing Score</label>
+                    <input type="number" name="writing_score" class="form-control" min="0" max="100" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2">Predict Math Score</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
