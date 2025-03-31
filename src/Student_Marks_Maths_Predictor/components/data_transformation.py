@@ -122,6 +122,8 @@ class Data_Transformation:
             train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
             test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
             logging.info("Data successfully merged into final arrays.")
+            
+            logging.info(f"preprocessor_obj looks like :{preprocessor_obj}")
 
             # Saving the preprocessor object for future inference
             logging.info("Saving the preprocessor object...")

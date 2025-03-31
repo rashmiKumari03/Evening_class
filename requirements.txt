@@ -11,3 +11,4 @@ dill
 xgboost
 catboost
 flask
+python-dotenv

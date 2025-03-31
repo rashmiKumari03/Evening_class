@@ -94,6 +94,7 @@ class Model_Trainer:
             )
 
             logging.info("Model evaluation completed successfully......")
+            logging.info(f"model_report is : {model_report}")
             
             # Finding the best-performing model based on R2 score
             best_model_score = max(model_report.values(), key=lambda x: x["Test R2"])["Test R2"] 
